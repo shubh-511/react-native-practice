@@ -3,7 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 
 const ColorBox = (props: {colorName: any; hexCode: any}) => {
   return (
-    <View style={[styles.box, styles.cyan]}>
+    <View style={[styles.box, {backgroundColor: props.hexCode}]}>
       <Text style={styles.boxText}>
         {props.colorName}: {props.hexCode}
       </Text>

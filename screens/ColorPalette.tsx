@@ -1,36 +1,28 @@
 import React from 'react';
-import {SafeAreaView, FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet, Text} from 'react-native';
 import ColorBox from '../components/ColorBox';
 
-const COLORS = [
-  {colorName: 'Red', hexCode: '#FF0000'},
-  {colorName: 'Orange', hexCode: '#FF7F00'},
-  {colorName: 'Yellow', hexCode: '#FFFF00'},
-  {colorName: 'Green', hexCode: '#00FF00'},
-  {colorName: 'Violet', hexCode: '#8B00FF'},
-];
-
-const ColorPalette = () => {
+const ColorPalette = ({route}: any) => {
+  const {colors, paletteName} = route.params.item;
+  // console.warn(colors);
   return (
-    <SafeAreaView>
-      <FlatList
-        keyExtractor={item => item.colorName}
-        style={styles.container}
-        data={COLORS}
-        renderItem={({item}) => (
-          <ColorBox hexCode={item.hexCode} colorName={item.colorName} />
-        )}
-      />
-    </SafeAreaView>
+    <FlatList
+      keyExtractor={item => item.colorName}
+      style={styles.container}
+      data={colors}
+      renderItem={({item}) => (
+        <ColorBox colorName={item.colorName} hexCode={item.hexCode} />
+      )}
+      ListHeaderComponent={<Text style={styles.heading}>{paletteName}</Text>}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
-    paddingTop: 40,
+    padding: 10,
   },
-  text: {
+  heading: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
