@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, TouchableOpacity} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const COLORS = [
   {colorName: 'Base03', hexCode: '#002b36'},
@@ -52,10 +52,26 @@ const Home = ({navigation}: any) => {
             navigation.navigate('ColorPalette', {item});
           }}>
           <Text>{item.paletteName}</Text>
+          <FlatList
+            horizontal={true}
+            data={item.colors.slice(0, 5)}
+            renderItem={item => (
+              <View style={[style.box, {backgroundColor: item.item.hexCode}]} />
+            )}
+          />
         </TouchableOpacity>
       )}
     />
   );
 };
 
+const style = StyleSheet.create({
+  box: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 10,
+    height: 30,
+    width: 30,
+  },
+});
 export default Home;
