@@ -50,7 +50,7 @@ const Home = ({navigation}: any) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('ColorPalette', {item});
-          }}> 
+          }}>
           <Text>{item.paletteName}</Text>
           <FlatList
             horizontal={true}
