@@ -1,6 +1,5 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import ModalScreen from './ModalScreen';
 
 const COLORS = [
   {colorName: 'Base03', hexCode: '#002b36'},
